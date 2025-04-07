@@ -1,0 +1,33 @@
+nacos:
+  address:
+  username: nacos
+  password:
+  namespace: sentinel
+
+
+spring:
+  application:
+    name: sentinel-client-demo
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      discovery:
+        username: ${nacos.username}
+        password: ${nacos.password}
+        server-addr: ${nacos.address}
+        namespace: ${nacos.namespace}
+    sentinel:
+      transport:
+        dashboard: localhost:8080
+      eager: true
+#      config:
+#        username: ${nacos.username}
+#        password: ${nacos.password}
+#        server-addr: ${nacos.address}
+#        namespace: ${nacos.namespace}
+#        file-extension: yml
+#        import-check:
+server:
+  port: 8081
+#          enabled: false
